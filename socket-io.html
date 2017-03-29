@@ -1,0 +1,44 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="./socket-io-imports.html">
+
+<!--
+`socket-io`
+A better non opinionated socket io element.
+
+@demo demo/index.html 
+-->
+<dom-module id="socket-io">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    
+  </template>
+
+  <script>
+    
+    Polymer({
+
+      is: 'socket-io',
+
+      properties: {
+
+        endpoint : {
+          type : String
+        },
+
+        socket : {
+          type : Object
+        }
+
+      },
+
+      ready: function(){
+        this.set('socket', io.connect(this.endpoint || 'http://localhost:4000'));
+      }
+
+    });
+  </script>
+</dom-module>
