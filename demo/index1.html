@@ -19,9 +19,12 @@
     <div class="vertical-section-container centered">
       <h3>Basic socket-io demo</h3>
       <demo-snippet>
-        The most basic example will connect to localhost
+        Important to note is that it will start connecting to the server once initialise is true.
         <template>
-          <socket-io></socket-io>
+          <socket-io 
+          endpoint="http://localhost:4000" 
+          initialise="true">
+          </socket-io>
         </template>
       </demo-snippet>
     </div>

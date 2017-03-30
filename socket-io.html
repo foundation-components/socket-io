@@ -3,9 +3,12 @@
 
 <!--
 `socket-io`
-A better non opinionated socket io element.
+A non opinionated socket io element.
 
-@demo demo/index.html 
+@demo
+
+@demo demo/index.html example without config 
+@demo demo/index1.html example with an endpoint set.
 -->
 <dom-module id="socket-io">
   <template>
@@ -25,19 +28,60 @@ A better non opinionated socket io element.
 
       properties: {
 
+        /**
+         * Here you can define the endpoint to the socket.io server.
+         */
         endpoint : {
-          type : String
+          type : String,
+          value : 'http://localhost'
         },
 
+        /**
+         * This binds directly to the socket. Here you can subscribe
+         * on events and emit to them.
+         */
         socket : {
           type : Object,
           notify : true
+        },
+
+        /**
+         * This makes sure that the websocket is not instantly setup.
+         */
+        initialise : {
+          type : Boolean,
+          value : false
         }
+
+        /**
+          * Fired when the socket changes.
+          *
+          * @event on-disconnected
+          */
+
+        /**
+          * Fired when the socket changes.
+          *
+          * @event on-connected
+          */
 
       },
 
       ready: function(){
-        this.set('socket', io.connect(this.endpoint || 'http://localhost:4000'));
+        if(this.initialise) {
+          var socket = io.connect(this.endpoint);
+          this.set('socket', socket);
+          socket.on('connect', this._connected.bind(this));
+          socket.on('disconnect', this._disconnected.bind(this));
+        }
+      },
+
+      _connected : function() {
+        this.fire('on-connected');
+      },
+
+      _disconnected : function() {
+        this.fire('on-disconnected');
       }
 
     });
