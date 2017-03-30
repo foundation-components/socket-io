@@ -4,7 +4,8 @@
   "description": "A non opinionated socket io element.",
   "main": "socket-io.html",
   "authors": [
-    "Jack Sierkstra <jacksierkstra@gmail.com>"
+    "Jack Sierkstra <jacksierkstra@gmail.com>",
+    "Pieter van Dorst <ppj.vandorst@gmail.com>"
   ],
   "keywords": [
     "web-components",
