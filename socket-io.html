@@ -1,5 +1,5 @@
-<link rel="import" href="../polymer/polymer.html">
-<link rel="import" href="./socket-io-imports.html">
+<link rel="import" href="bower_components/polymer/polymer.html">
+<link rel="import" href="bower_components/socket-io-html/socket-io-html.html">
 
 <!--
 `socket-io`
@@ -10,34 +10,33 @@ A better non opinionated socket io element.
 <dom-module id="socket-io">
   <template>
     <style>
-      :host {
+       :host {
         display: block;
       }
     </style>
-    
+
   </template>
 
   <script>
-    
-    Polymer({
+    Polymer( {
 
       is: 'socket-io',
 
       properties: {
 
-        endpoint : {
-          type : String
+        endpoint: {
+          type: String
         },
 
-        socket : {
-          type : Object,
-          notify : true
+        socket: {
+          type: Object,
+          notify: true
         }
 
       },
 
-      ready: function(){
-        this.set('socket', io.connect(this.endpoint || 'http://localhost:4000'));
+      ready: function () {
+        this.set( 'socket', io.connect( this.endpoint || 'http://localhost:4000' ) );
       }
 
     });
