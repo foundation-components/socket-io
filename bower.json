@@ -1,7 +1,23 @@
 {
   "name": "socket-io",
+  "version": "0.0.1",
   "description": "A non opinionated socket io element.",
   "main": "socket-io.html",
+  "authors": [
+    "Jack Sierkstra <jacksierkstra@gmail.com>"
+  ],
+  "keywords": [
+    "web-components",
+    "polymer",
+    "socket-io",
+    "websockets"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/foundation-components/socket-io"
+  },
+  "ignore": [],
+  "homepage": "https://github.com/foundation-components/socket-io",
   "dependencies": {
     "polymer": "Polymer/polymer#^1.4.0"
   },
