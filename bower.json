@@ -4,7 +4,8 @@
   "description": "A non opinionated socket io element.",
   "main": "socket-io.html",
   "authors": [
-    "Jack Sierkstra <jacksierkstra@gmail.com>"
+    "Jack Sierkstra <jacksierkstra@gmail.com>",
+    "Pieter van Dorst <ppj.vandorst@gmail.com>"
   ],
   "keywords": [
     "web-components",
@@ -19,7 +20,8 @@
   "ignore": [],
   "homepage": "https://github.com/foundation-components/socket-io",
   "dependencies": {
-    "polymer": "Polymer/polymer#^1.4.0"
+    "polymer": "Polymer/polymer#^1.4.0",
+    "fc.socket-io-html": "1.7.3"
   },
   "devDependencies": {
     "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
