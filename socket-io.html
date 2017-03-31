@@ -44,7 +44,7 @@ A non opinionated socket io element.
         },
 
         /**
-         * This makes sure that the websocket is not instantly setup.
+         * This makes sure that the websocket is not instantly running.
          */
         initialise : {
           type : Boolean,
@@ -52,15 +52,15 @@ A non opinionated socket io element.
         }
 
         /**
-          * Fired when the socket changes.
+          * Fired when a connection has been setup.
           *
-          * @event on-disconnected
+          * @event connected
           */
 
         /**
-          * Fired when the socket changes.
+          * Fired when connection to the websocket is lost.
           *
-          * @event on-connected
+          * @event disconnected
           */
 
       },
@@ -75,11 +75,11 @@ A non opinionated socket io element.
       },
 
       _connected : function() {
-        this.fire('on-connected');
+        this.fire('connected');
       },
 
       _disconnected : function() {
-        this.fire('on-disconnected');
+        this.fire('disconnected');
       }
 
     });
