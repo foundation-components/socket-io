@@ -20,7 +20,7 @@ A non opinionated socket io element.
   </template>
 
   <script>
-    Polymer( {
+    Polymer({
 
       is: 'socket-io',
 
@@ -29,26 +29,26 @@ A non opinionated socket io element.
         /**
          * Here you can define the endpoint to the socket.io server.
          */
-        endpoint : {
-          type : String,
-          value : 'http://localhost'
+        endpoint: {
+          type: String,
+          value: 'http://localhost'
         },
 
         /**
          * This binds directly to the socket. Here you can subscribe
          * on events and emit to them.
          */
-        socket : {
-          type : Object,
-          notify : true
+        socket: {
+          type: Object,
+          notify: true
         },
 
         /**
          * This makes sure that the websocket is not instantly running.
          */
-        initialise : {
-          type : Boolean,
-          value : false
+        initialise: {
+          type: Boolean,
+          value: false
         }
 
         /**
@@ -63,23 +63,33 @@ A non opinionated socket io element.
           * @event disconnected
           */
 
+        /**
+          * Fired when an error occures when connecting to the websocket.
+          *
+          * @event connect-error
+          */
       },
 
-      ready: function(){
-        if(this.initialise) {
+      ready: function () {
+        if (this.initialise) {
           var socket = io.connect(this.endpoint);
           this.set('socket', socket);
           socket.on('connect', this._connected.bind(this));
           socket.on('disconnect', this._disconnected.bind(this));
+          socket.on('connect_error', this._connectionError.bind(this));
         }
       },
 
-      _connected : function() {
+      _connected: function () {
         this.fire('connected');
       },
 
-      _disconnected : function() {
+      _disconnected: function () {
         this.fire('disconnected');
+      },
+
+      _connectionError: function () {
+        this.fire('connect-error');
       }
 
     });
