@@ -1,6 +1,6 @@
 {
   "name": "socket-io",
-  "version": "0.0.2",
+  "version": "1.7.4",
   "description": "A non opinionated socket io element.",
   "main": "socket-io.html",
   "authors": [
