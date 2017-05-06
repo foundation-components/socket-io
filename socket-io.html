@@ -72,12 +72,20 @@ A non opinionated socket io element.
 
       ready: function () {
         if (this.initialise) {
-          var socket = io.connect(this.endpoint);
-          this.set('socket', socket);
-          socket.on('connect', this._connected.bind(this));
-          socket.on('disconnect', this._disconnected.bind(this));
-          socket.on('connect_error', this._connectionError.bind(this));
+          this.connect();
         }
+      },
+
+      connect: function () {
+        var socket = io.connect(this.endpoint);
+        this.set('socket', socket);
+        socket.on('connect', this._connected.bind(this));
+        socket.on('disconnect', this._disconnected.bind(this));
+        socket.on('connect_error', this._connectionError.bind(this));
+      },
+
+      disconnect: function () {
+        this.socket.close();
       },
 
       _connected: function () {
